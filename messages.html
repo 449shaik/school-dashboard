@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages - Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+   <link rel="stylesheet" href="messages.css">
+</head>
+
+<body>
+
+    <!-- sidebar overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+    <!-- sidebar -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-logo">
+            <img src="./ChatGPT Image Jun 23, 2026, 03_28_27 PM.png" alt="">
+            <h2>Sunrise <span>School</span></h2>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html">
+                <i class="fa-solid fa-gauge-high"></i> Dashboard
+            </a>
+            <a href="students.html">
+                <i class="fa-solid fa-users"></i> Students
+            </a>
+            <a href="teachers.html" class="active">
+                <i class="fa-solid fa-chalkboard-user"></i> Teachers
+            </a>
+             <a href="teachers-attendance.html">
+                <i class="fa-solid fa-clipboard-check"></i> Teachers Attendance
+            </a>
+            <a href="fee-management.html">
+                <i class="fa-solid fa-coins"></i> Fee Management
+            </a>
+           
+            <a href="notice-board.html">
+                <i class="fa-solid fa-bullhorn"></i> Notice Board
+            </a>
+            <a href="messages.html">
+                <i class="fa-solid fa-envelope"></i> Messages
+            </a>
+            <a href="#" onclick="logout()" class="logout-link">
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
+            </a>
+        </nav>
+
+    </aside>
+
+    <!-- main -->
+    <main class="main-content">
+
+        <!-- welcome -->
+        <div class="welcome-box">
+
+            <div class="welcome-left">
+                <button class="hamburger-btn" onclick="toggleSidebar()">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <div class="welcome-text">
+                    <h2>👋 Welcome, Admin!</h2>
+                    <p>Manage all messages from here.</p>
+                </div>
+            </div>
+
+            <div class="user-info">
+                <span>Admin</span>
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User">
+            </div>
+
+        </div>
+
+        <!-- messages section -->
+        <div class="messages-section">
+
+            <!-- header -->
+            <div class="section-header">
+                <h1><i class="fa-solid fa-envelope"></i> Messages</h1>
+                <button class="compose-btn">
+                    <i class="fa-solid fa-pen"></i> Compose
+                </button>
+            </div>
+
+            <!-- message list -->
+            <div class="message-list">
+
+                <!-- message 1 -->
+                <div class="message-item">
+                    <img src="https://randomuser.me/api/portraits/women/2.jpg" class="msg-avatar" alt="">
+                    <div class="msg-content">
+                        <h4>Priya Singh</h4>
+                        <p>Sir, can you please share the exam schedule for class 10?</p>
+                    </div>
+                    <span class="msg-status unread">Unread</span>
+                    <span class="msg-time">10:30 AM</span>
+                    <div class="msg-actions">
+                        <button class="read-btn"><i class="fa-regular fa-check-circle"></i> Read</button>
+                        <button class="delete-btn"><i class="fa-regular fa-trash-can"></i></button>
+                    </div>
+                </div>
+
+                <!-- message 2 -->
+                <div class="message-item">
+                    <img src="https://randomuser.me/api/portraits/men/3.jpg" class="msg-avatar" alt="">
+                    <div class="msg-content">
+                        <h4>Amit Verma</h4>
+                        <p>I have submitted the attendance report for today. Please check.</p>
+                    </div>
+                    <span class="msg-status read">Read</span>
+                    <span class="msg-time">09:15 AM</span>
+                    <div class="msg-actions">
+                        <button class="read-btn"><i class="fa-regular fa-check-circle"></i> Read</button>
+                        <button class="delete-btn"><i class="fa-regular fa-trash-can"></i></button>
+                    </div>
+                </div>
+
+                <!-- message 3 -->
+                <div class="message-item">
+                    <img src="https://randomuser.me/api/portraits/women/4.jpg" class="msg-avatar" alt="">
+                    <div class="msg-content">
+                        <h4>Sneha Reddy</h4>
+                        <p>When is the next staff meeting scheduled? Please confirm.</p>
+                    </div>
+                    <span class="msg-status unread">Unread</span>
+                    <span class="msg-time">Yesterday</span>
+                    <div class="msg-actions">
+                        <button class="read-btn"><i class="fa-regular fa-check-circle"></i> Read</button>
+                        <button class="delete-btn"><i class="fa-regular fa-trash-can"></i></button>
+                    </div>
+                </div>
+
+                <!-- message 4 -->
+                <div class="message-item">
+                    <img src="https://randomuser.me/api/portraits/men/5.jpg" class="msg-avatar" alt="">
+                    <div class="msg-content">
+                        <h4>Vikram Singh</h4>
+                        <p>The new textbooks have arrived. When should we distribute them to students?</p>
+                    </div>
+                    <span class="msg-status read">Read</span>
+                    <span class="msg-time">Yesterday</span>
+                    <div class="msg-actions">
+                        <button class="read-btn"><i class="fa-regular fa-check-circle"></i> Read</button>
+                        <button class="delete-btn"><i class="fa-regular fa-trash-can"></i></button>
+                    </div>
+                </div>
+
+                <!-- message 5 -->
+                <div class="message-item">
+                    <img src="https://randomuser.me/api/portraits/women/6.jpg" class="msg-avatar" alt="">
+                    <div class="msg-content">
+                        <h4>Ananya Sharma</h4>
+                        <p>Sir, there is a parent query regarding the fee structure. Please guide.</p>
+                    </div>
+                    <span class="msg-status unread">Unread</span>
+                    <span class="msg-time">2 days ago</span>
+                    <div class="msg-actions">
+                        <button class="read-btn"><i class="fa-regular fa-check-circle"></i> Read</button>
+                        <button class="delete-btn"><i class="fa-regular fa-trash-can"></i></button>
+                    </div>
+                </div>
+
+                <!-- message 6 -->
+                <div class="message-item">
+                    <img src="https://randomuser.me/api/portraits/men/7.jpg" class="msg-avatar" alt="">
+                    <div class="msg-content">
+                        <h4>Arjun Mehta</h4>
+                        <p>The school bus route has been updated. Please review the new schedule.</p>
+                    </div>
+                    <span class="msg-status read">Read</span>
+                    <span class="msg-time">2 days ago</span>
+                    <div class="msg-actions">
+                        <button class="read-btn"><i class="fa-regular fa-check-circle"></i> Read</button>
+                        <button class="delete-btn"><i class="fa-regular fa-trash-can"></i></button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- javascript -->
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.getElementById('sidebarOverlay').classList.toggle('active');
+        }
+
+        function closeSidebar() {
+            document.getElementById('sidebar').classList.remove('active');
+            document.getElementById('sidebarOverlay').classList.remove('active');
+        }
+
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                window.location.href = 'index.html';
+            }
+        }
+
+        document.querySelectorAll('.sidebar-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    closeSidebar();
+                }
+            });
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                closeSidebar();
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop() || 'dashboard.html';
+            document.querySelectorAll('.sidebar-nav a').forEach(link => {
+                link.classList.remove('active');
+            });
+            document.querySelectorAll('.sidebar-nav a').forEach(link => {
+                const linkPage = link.getAttribute('href');
+                if (linkPage === currentPage ||
+                    linkPage === '../admin/' + currentPage ||
+                    linkPage.includes(currentPage)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

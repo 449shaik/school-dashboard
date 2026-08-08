@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students - Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="sidebar.css">
+
+</head>
+
+<body>
+
+
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+    >
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-logo">
+           <img src="./ChatGPT Image Jun 23, 2026, 03_28_27 PM.png" alt="">
+            <h2>Sunrise <span>School</span></h2>
+        </div>
+
+       <nav class="sidebar-nav">
+            <a href="dashboard.html">
+                <i class="fa-solid fa-gauge-high"></i> Dashboard
+            </a>
+            <a href="students.html">
+                <i class="fa-solid fa-users"></i> Students
+            </a>
+            <a href="teachers.html" class="active">
+                <i class="fa-solid fa-chalkboard-user"></i> Teachers
+            </a>
+             <a href="teachers-attendance.html">
+                <i class="fa-solid fa-clipboard-check"></i> Teachers Attendance
+            </a>
+            <a href="fee-management.html">
+                <i class="fa-solid fa-coins"></i> Fee Management
+            </a>
+           
+            <a href="notice-board.html">
+                <i class="fa-solid fa-bullhorn"></i> Notice Board
+            </a>
+            <a href="messages.html">
+                <i class="fa-solid fa-envelope"></i> Messages
+            </a>
+            <a href="#" onclick="logout()" class="logout-link">
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
+            </a>
+        </nav>
+
+
+    </aside>
+
+    >
+    <main class="main-content">
+
+       
+        <div class="welcome-box">
+
+            <div class="welcome-left">
+                <!-- Hamburger Button - Welcome Box Ke Andar -->
+                <button class="hamburger-btn" onclick="toggleSidebar()">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <div class="welcome-text">
+                    <h2>👋 Welcome, Admin!</h2>
+                    <p>Manage all students from here.</p>
+                </div>
+            </div>
+
+            <div class="user-info">
+                <span>Admin</span>
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User">
+            </div>
+
+        </div>
+
+
+
+
+    
+
+    </main>
+
+   
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.getElementById('sidebarOverlay').classList.toggle('active');
+        }
+
+        function closeSidebar() {
+            document.getElementById('sidebar').classList.remove('active');
+            document.getElementById('sidebarOverlay').classList.remove('active');
+        }
+
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                window.location.href = 'index.html';
+            }
+        }
+
+        function searchStudent() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const rows = document.querySelectorAll('#studentTable tbody tr');
+
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(input) ? '' : 'none';
+            });
+        }
+
+        document.getElementById('searchInput').addEventListener('keyup', function () {
+            const input = this.value.toLowerCase();
+            const rows = document.querySelectorAll('#studentTable tbody tr');
+
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(input) ? '' : 'none';
+            });
+        });
+
+        document.querySelectorAll('.sidebar-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    closeSidebar();
+                }
+            });
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                closeSidebar();
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const currentPage = window.location.pathname.split('/').pop() || 'dashboard.html';
+            document.querySelectorAll('.sidebar-nav a').forEach(link => {
+                link.classList.remove('active');
+            });
+            document.querySelectorAll('.sidebar-nav a').forEach(link => {
+                const linkPage = link.getAttribute('href');
+                if (linkPage === currentPage ||
+                    linkPage === '../admin/' + currentPage ||
+                    linkPage.includes(currentPage)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

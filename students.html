@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students - Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="students.css">
+
+   
+</head>
+
+<body>
+
+   
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+ 
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-logo">
+           <img src="./ChatGPT Image Jun 23, 2026, 03_28_27 PM.png" alt="">
+            <h2>Sunrise <span>School</span></h2>
+        </div>
+
+      <nav class="sidebar-nav">
+            <a href="dashboard.html">
+                <i class="fa-solid fa-gauge-high"></i> Dashboard
+            </a>
+            <a href="students.html">
+                <i class="fa-solid fa-users"></i> Students
+            </a>
+            <a href="teachers.html" class="active">
+                <i class="fa-solid fa-chalkboard-user"></i> Teachers
+            </a>
+             <a href="teachers-attendance.html">
+                <i class="fa-solid fa-clipboard-check"></i> Teachers Attendance
+            </a>
+            <a href="fee-management.html">
+                <i class="fa-solid fa-coins"></i> Fee Management
+            </a>
+           
+            <a href="notice-board.html">
+                <i class="fa-solid fa-bullhorn"></i> Notice Board
+            </a>
+            <a href="messages.html">
+                <i class="fa-solid fa-envelope"></i> Messages
+            </a>
+            <a href="#" onclick="logout()" class="logout-link">
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
+            </a>
+        </nav>
+
+
+    </aside>
+
+  
+    <main class="main-content">
+
+      
+        <div class="welcome-box">
+
+            <div class="welcome-left">
+                <!-- Hamburger Button - Welcome Box Ke Andar -->
+                <button class="hamburger-btn" onclick="toggleSidebar()">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <div class="welcome-text">
+                    <h2>👋 Welcome, Admin!</h2>
+                    <p>Manage all students from here.</p>
+                </div>
+            </div>
+
+            <div class="user-info">
+                <span>Admin</span>
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User">
+            </div>
+
+        </div>
+
+       
+        <div class="students-section">
+
+            <!-- Header -->
+            <div class="section-header">
+                <h1><i class="fa-solid fa-users"></i> Student List</h1>
+                <button class="add-student-btn">
+                    <i class="fa-solid fa-user-plus"></i> Add Student
+                </button>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <input type="text" placeholder="🔍 Search by name, ID, roll no..." id="searchInput">
+                <button class="search-btn" onclick="searchStudent()">
+                    <i class="fa-solid fa-search"></i> Search
+                </button>
+            </div>
+
+            <!-- Student Table -->
+            <div class="table-wrapper">
+                <table class="student-table" id="studentTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Photo</th>
+                            <th>Student ID</th>
+                            <th>Name</th>
+                            <th>Roll</th>
+                            <th>Class</th>
+                            <th>Gender</th>
+                            <th>Phone</th>
+                            <th>Admission Date</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><img src="https://randomuser.me/api/portraits/men/1.jpg" class="student-avatar" alt=""></td>
+                            <td>STU-2025-001</td>
+                            <td>Rahul Sharma</td>
+                            <td>25</td>
+                            <td>10-A</td>
+                            <td>Male</td>
+                            <td>+91 98765 43210</td>
+                            <td>01 Apr 2025</td>
+                            <td><span class="status-badge active">Active</span></td>
+                            <td>
+                                <div class="action-btns">
+                                    <button class="view-btn" title="View"><i class="fa-regular fa-eye"></i></button>
+                                    <button class="edit-btn" title="Edit"><i class="fa-regular fa-pen-to-square"></i></button>
+                                    <button class="delete-btn" title="Delete"><i class="fa-regular fa-trash-can"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><img src="https://randomuser.me/api/portraits/women/2.jpg" class="student-avatar" alt=""></td>
+                            <td>STU-2025-002</td>
+                            <td>Priya Patel</td>
+                            <td>12</td>
+                            <td>10-B</td>
+                            <td>Female</td>
+                            <td>+91 98765 43211</td>
+                            <td>01 Apr 2025</td>
+                            <td><span class="status-badge active">Active</span></td>
+                            <td>
+                                <div class="action-btns">
+                                    <button class="view-btn" title="View"><i class="fa-regular fa-eye"></i></button>
+                                    <button class="edit-btn" title="Edit"><i class="fa-regular fa-pen-to-square"></i></button>
+                                    <button class="delete-btn" title="Delete"><i class="fa-regular fa-trash-can"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><img src="https://randomuser.me/api/portraits/men/3.jpg" class="student-avatar" alt=""></td>
+                            <td>STU-2025-003</td>
+                            <td>Amit Kumar</td>
+                            <td>05</td>
+                            <td>9-A</td>
+                            <td>Male</td>
+                            <td>+91 98765 43212</td>
+                            <td>15 Apr 2025</td>
+                            <td><span class="status-badge active">Active</span></td>
+                            <td>
+                                <div class="action-btns">
+                                    <button class="view-btn" title="View"><i class="fa-regular fa-eye"></i></button>
+                                    <button class="edit-btn" title="Edit"><i class="fa-regular fa-pen-to-square"></i></button>
+                                    <button class="delete-btn" title="Delete"><i class="fa-regular fa-trash-can"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><img src="https://randomuser.me/api/portraits/women/4.jpg" class="student-avatar" alt=""></td>
+                            <td>STU-2025-004</td>
+                            <td>Sneha Reddy</td>
+                            <td>18</td>
+                            <td>8-B</td>
+                            <td>Female</td>
+                            <td>+91 98765 43213</td>
+                            <td>20 Apr 2025</td>
+                            <td><span class="status-badge inactive">Inactive</span></td>
+                            <td>
+                                <div class="action-btns">
+                                    <button class="view-btn" title="View"><i class="fa-regular fa-eye"></i></button>
+                                    <button class="edit-btn" title="Edit"><i class="fa-regular fa-pen-to-square"></i></button>
+                                    <button class="delete-btn" title="Delete"><i class="fa-regular fa-trash-can"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td><img src="https://randomuser.me/api/portraits/men/5.jpg" class="student-avatar" alt=""></td>
+                            <td>STU-2025-005</td>
+                            <td>Vikram Singh</td>
+                            <td>08</td>
+                            <td>9-B</td>
+                            <td>Male</td>
+                            <td>+91 98765 43214</td>
+                            <td>25 Apr 2025</td>
+                            <td><span class="status-badge active">Active</span></td>
+                            <td>
+                                <div class="action-btns">
+                                    <button class="view-btn" title="View"><i class="fa-regular fa-eye"></i></button>
+                                    <button class="edit-btn" title="Edit"><i class="fa-regular fa-pen-to-square"></i></button>
+                                    <button class="delete-btn" title="Delete"><i class="fa-regular fa-trash-can"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.getElementById('sidebarOverlay').classList.toggle('active');
+        }
+
+        function closeSidebar() {
+            document.getElementById('sidebar').classList.remove('active');
+            document.getElementById('sidebarOverlay').classList.remove('active');
+        }
+
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                window.location.href = 'index.html';
+            }
+        }
+
+        function searchStudent() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const rows = document.querySelectorAll('#studentTable tbody tr');
+
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(input) ? '' : 'none';
+            });
+        }
+
+        document.getElementById('searchInput').addEventListener('keyup', function() {
+            const input = this.value.toLowerCase();
+            const rows = document.querySelectorAll('#studentTable tbody tr');
+
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(input) ? '' : 'none';
+            });
+        });
+
+        document.querySelectorAll('.sidebar-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    closeSidebar();
+                }
+            });
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                closeSidebar();
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop() || 'dashboard.html';
+            document.querySelectorAll('.sidebar-nav a').forEach(link => {
+                link.classList.remove('active');
+            });
+            document.querySelectorAll('.sidebar-nav a').forEach(link => {
+                const linkPage = link.getAttribute('href');
+                if (linkPage === currentPage ||
+                    linkPage === '../admin/' + currentPage ||
+                    linkPage.includes(currentPage)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

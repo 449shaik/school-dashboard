@@ -1,0 +1,313 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f1f5f9;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 260px;
+    background: #0f172a;
+    padding: 0 0 20px 0;
+    overflow-y: auto;
+    transition: all 0.4s ease;
+    z-index: 1000;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-logo {
+    text-align: center;
+    padding: 25px 20px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.sidebar-logo img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid #38bdf8;
+    padding: 3px;
+    object-fit: cover;
+}
+
+.sidebar-logo h2 {
+    color: #ffffff;
+    font-size: 18px;
+    margin-top: 10px;
+    font-weight: 700;
+}
+
+.sidebar-logo h2 span {
+    color: #38bdf8;
+}
+
+.sidebar-nav {
+    padding: 12px 14px;
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 11px 16px;
+    margin: 2px 0;
+    border-radius: 10px;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.sidebar-nav a i {
+    width: 22px;
+    font-size: 16px;
+    color: #64748b;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.sidebar-nav a:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+}
+
+.sidebar-nav a:hover i {
+    color: #38bdf8;
+}
+
+.sidebar-nav a.active {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border-right: 3px solid #38bdf8;
+}
+
+.sidebar-nav a.active i {
+    color: #38bdf8;
+}
+
+.sidebar-nav .logout-link {
+    margin-top: 10px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    color: #ef4444;
+}
+
+.sidebar-nav .logout-link i {
+    color: #ef4444;
+}
+
+.sidebar-nav .logout-link:hover {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: #38bdf8;
+}
+
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    transition: all 0.3s ease;
+}
+
+.sidebar-overlay.active {
+    display: block;
+}
+
+.main-content {
+    margin-left: 260px;
+    padding: 30px 40px;
+    min-height: 100vh;
+}
+
+
+.welcome-box {
+    max-width: 1100px;
+    margin: 0 auto 25px;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    padding: 25px 35px;
+    border-radius: 16px;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.welcome-box .welcome-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.welcome-box .hamburger-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.welcome-box .hamburger-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #facc15;
+}
+
+.welcome-box .welcome-text h2 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.welcome-box .welcome-text p {
+    color: #cbd5e1;
+    margin-top: 5px;
+}
+
+.welcome-box .user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 8px 16px 8px 12px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.welcome-box .user-info span {
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.welcome-box .user-info img {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 2px solid #facc15;
+    padding: 2px;
+    object-fit: cover;
+}
+
+
+
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 230px;
+    }
+
+    .main-content {
+        margin-left: 230px;
+        padding: 25px 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .welcome-box .hamburger-btn {
+        display: block;
+    }
+
+    .sidebar {
+        left: -280px;
+        width: 280px;
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    .sidebar-overlay.active {
+        display: block;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    .welcome-box {
+        padding: 20px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .welcome-box .welcome-left {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .welcome-box .welcome-text h2 {
+        font-size: 20px;
+    }
+
+    .welcome-box .user-info {
+        padding: 6px 14px 6px 10px;
+    }
+
+
+}
+
+@media (max-width: 480px) {
+    .main-content {
+        padding: 15px;
+    }
+
+    .welcome-box {
+        padding: 15px;
+    }
+
+    .welcome-box .hamburger-btn {
+        font-size: 20px;
+        padding: 4px 8px;
+    }
+
+    .welcome-box .welcome-text h2 {
+        font-size: 18px;
+    }
+
+    .welcome-box .user-info span {
+        font-size: 12px;
+    }
+
+    .welcome-box .user-info img {
+        width: 30px;
+        height: 30px;
+    }
+
+}

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teachers Attendance - Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+  <link rel="stylesheet" href="teachers-attendance.css">
+</head>
+
+<body>
+
+  
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+    
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-logo">
+           <img src="./ChatGPT Image Jun 23, 2026, 03_28_27 PM.png" alt="">
+            <h2>Sunrise <span>School</span></h2>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html">
+                <i class="fa-solid fa-gauge-high"></i> Dashboard
+            </a>
+            <a href="students.html">
+                <i class="fa-solid fa-users"></i> Students
+            </a>
+            <a href="teachers.html">
+                <i class="fa-solid fa-chalkboard-user"></i> Teachers
+            </a>
+
+            <a href="teachers-attendance.html" class="active">
+                <i class="fa-solid fa-clipboard-check"></i> Teachers Attendance
+            </a>
+            <a href="fee-management.html">
+                <i class="fa-solid fa-coins"></i> Fee Management
+            </a>
+            
+            <a href="notice-board.html">
+                <i class="fa-solid fa-bullhorn"></i> Notice Board
+            </a>
+            <a href="messages.html">
+                <i class="fa-solid fa-envelope"></i> Messages
+            </a>
+            <a href="#" onclick="logout()" class="logout-link">
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
+            </a>
+        </nav>
+
+    </aside>
+
+    
+    <main class="main-content">
+
+        <!-- Welcome Box -->
+        <div class="welcome-box">
+            <div class="welcome-left">
+                <button class="hamburger-btn" onclick="toggleSidebar()">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div class="welcome-text">
+                    <h2>👋 Welcome, Admin!</h2>
+                    <p>Mark teachers attendance for today.</p>
+                </div>
+            </div>
+            <div class="user-info">
+                <span>Admin</span>
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User">
+            </div>
+        </div>
+
+        
+        <div class="attendance-section">
+
+            <!-- Header -->
+            <div class="section-header">
+                <h1><i class="fa-solid fa-clipboard-check"></i> Teachers Attendance</h1>
+                <div class="date-filter">
+                    <label><i class="fa-regular fa-calendar"></i> Date:</label>
+                    <input type="date" id="attendanceDate" value="2025-06-01">
+                    <button class="filter-btn" onclick="filterAttendance()"><i class="fa-solid fa-filter"></i> Filter</button>
+                </div>
+            </div>
+
+            <!-- Attendance Summary -->
+            <div class="attendance-summary">
+                <div class="summary-card">
+                    <h3 class="blue">8</h3>
+                    <p>Total Teachers</p>
+                </div>
+                <div class="summary-card">
+                    <h3 class="green">6</h3>
+                    <p>Present</p>
+                </div>
+                <div class="summary-card">
+                    <h3 class="red">1</h3>
+                    <p>Absent</p>
+                </div>
+                <div class="summary-card">
+                    <h3 class="gold" style="color:#d97706;">1</h3>
+                    <p>On Leave</p>
+                </div>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <input type="text" placeholder="🔍 Search by name, ID, subject..." id="searchInput">
+                <button class="search-btn" onclick="searchAttendance()">
+                    <i class="fa-solid fa-search"></i> Search
+                </button>
+            </div>
+
+            <!-- Attendance Table -->
+            <div class="table-wrapper">
+                <table class="attendance-table" id="attendanceTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Photo</th>
+                            <th>Teacher ID</th>
+                            <th>Name</th>
+                            <th>Subject</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <tr>
+                            <td>1</td>
+                            <td><img src="https://randomuser.me/api/portraits/men/1.jpg" class="teacher-avatar"></td>
+                            <td>TCH-001</td>
+                            <td>Dr. Rajesh Kumar</td>
+                            <td>Mathematics</td>
+                            <td>
+                                <div class="status-radio">
+                                    <label><input type="radio" name="attendance1" value="present" checked> <span class="present">Present</span></label>
+                                    <label><input type="radio" name="attendance1" value="absent"> <span class="absent">Absent</span></label>
+                                    <label><input type="radio" name="attendance1" value="leave"> <span class="leave">Leave</span></label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><img src="https://randomuser.me/api/portraits/women/2.jpg" class="teacher-avatar"></td>
+                            <td>TCH-002</td>
+                            <td>Mrs. Priya Singh</td>
+                            <td>Science</td>
+                            <td>
+                                <div class="status-radio">
+                                    <label><input type="radio" name="attendance2" value="present" checked> <span class="present">Present</span></label>
+                                    <label><input type="radio" name="attendance2" value="absent"> <span class="absent">Absent</span></label>
+                                    <label><input type="radio" name="attendance2" value="leave"> <span class="leave">Leave</span></label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><img src="https://randomuser.me/api/portraits/men/3.jpg" class="teacher-avatar"></td>
+                            <td>TCH-003</td>
+                            <td>Mr. Amit Verma</td>
+                            <td>English</td>
+                            <td>
+                                <div class="status-radio">
+                                    <label><input type="radio" name="attendance3" value="present"> <span class="present">Present</span></label>
+                                    <label><input type="radio" name="attendance3" value="absent" checked> <span class="absent">Absent</span></label>
+                                    <label><input type="radio" name="attendance3" value="leave"> <span class="leave">Leave</span></label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><img src="https://randomuser.me/api/portraits/women/4.jpg" class="teacher-avatar"></td>
+                            <td>TCH-004</td>
+                            <td>Ms. Sneha Reddy</td>
+                            <td>Physics</td>
+                            <td>
+                                <div class="status-radio">
+                                    <label><input type="radio" name="attendance4" value="present"> <span class="present">Present</span></label>
+                                    <label><input type="radio" name="attendance4" value="absent"> <span class="absent">Absent</span></label>
+                                    <label><input type="radio" name="attendance4" value="leave" checked> <span class="leave">Leave</span></label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td><img src="https://randomuser.me/api/portraits/men/5.jpg" class="teacher-avatar"></td>
+                            <td>TCH-005</td>
+                            <td>Mr. Vikram Singh</td>
+                            <td>Chemistry</td>
+                            <td>
+                                <div class="status-radio">
+                                    <label><input type="radio" name="attendance5" value="present" checked> <span class="present">Present</span></label>
+                                    <label><input type="radio" name="attendance5" value="absent"> <span class="absent">Absent</span></label>
+                                    <label><input type="radio" name="attendance5" value="leave"> <span class="leave">Leave</span></label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td><img src="https://randomuser.me/api/portraits/women/6.jpg" class="teacher-avatar"></td>
+                            <td>TCH-006</td>
+                            <td>Mrs. Ananya Sharma</td>
+                            <td>Biology</td>
+                            <td>
+                                <div class="status-radio">
+                                    <label><input type="radio" name="attendance6" value="present" checked> <span class="present">Present</span></label>
+                                    <label><input type="radio" name="attendance6" value="absent"> <span class="absent">Absent</span></label>
+                                    <label><input type="radio" name="attendance6" value="leave"> <span class="leave">Leave</span></label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td><img src="https://randomuser.me/api/portraits/men/7.jpg" class="teacher-avatar"></td>
+                            <td>TCH-007</td>
+                            <td>Mr. Arjun Mehta</td>
+                            <td>History</td>
+                            <td>
+                                <div class="status-radio">
+                                    <label><input type="radio" name="attendance7" value="present"> <span class="present">Present</span></label>
+                                    <label><input type="radio" name="attendance7" value="absent" checked> <span class="absent">Absent</span></label>
+                                    <label><input type="radio" name="attendance7" value="leave"> <span class="leave">Leave</span></label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td><img src="https://randomuser.me/api/portraits/women/8.jpg" class="teacher-avatar"></td>
+                            <td>TCH-008</td>
+                            <td>Ms. Kavya Nair</td>
+                            <td>Geography</td>
+                            <td>
+                                <div class="status-radio">
+                                    <label><input type="radio" name="attendance8" value="present" checked> <span class="present">Present</span></label>
+                                    <label><input type="radio" name="attendance8" value="absent"> <span class="absent">Absent</span></label>
+                                    <label><input type="radio" name="attendance8" value="leave"> <span class="leave">Leave</span></label>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Mark Attendance Button -->
+            <div class="btn-wrapper">
+                <button class="mark-attendance-btn" onclick="markAttendance()">
+                    <i class="fa-solid fa-check-circle"></i> Mark Attendance
+                </button>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script>
+       
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.getElementById('sidebarOverlay').classList.toggle('active');
+        }
+
+        function closeSidebar() {
+            document.getElementById('sidebar').classList.remove('active');
+            document.getElementById('sidebarOverlay').classList.remove('active');
+        }
+
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                window.location.href = 'index.html';
+            }
+        }
+
+       
+        function searchAttendance() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const rows = document.querySelectorAll('#tableBody tr');
+
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(input) ? '' : 'none';
+            });
+        }
+
+        document.getElementById('searchInput').addEventListener('keyup', function() {
+            const input = this.value.toLowerCase();
+            const rows = document.querySelectorAll('#tableBody tr');
+
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(input) ? '' : 'none';
+            });
+        });
+
+      
+        function filterAttendance() {
+            const date = document.getElementById('attendanceDate').value;
+            alert('Showing attendance for: ' + date);
+        }
+
+      
+        function markAttendance() {
+            const rows = document.querySelectorAll('#tableBody tr');
+            let present = 0,
+                absent = 0,
+                leave = 0;
+
+            rows.forEach((row, index) => {
+                const radios = row.querySelectorAll('input[type="radio"]');
+                let checked = false;
+                radios.forEach(radio => {
+                    if (radio.checked) {
+                        checked = true;
+                        if (radio.value === 'present') present++;
+                        else if (radio.value === 'absent') absent++;
+                        else if (radio.value === 'leave') leave++;
+                    }
+                });
+            });
+
+            const total = present + absent + leave;
+            alert('✅ Attendance Marked Successfully!\n\n📊 Summary:\nTotal: ' + total + '\n✅ Present: ' + present +
+                '\n❌ Absent: ' + absent + '\n📋 Leave: ' + leave);
+
+            // Update summary cards
+            document.querySelector('.attendance-summary .blue').textContent = total;
+            document.querySelector('.attendance-summary .green').textContent = present;
+            document.querySelector('.attendance-summary .red').textContent = absent;
+            document.querySelector('.attendance-summary .gold').textContent = leave;
+        }
+
+       
+
+        document.querySelectorAll('.sidebar-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    closeSidebar();
+                }
+            });
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                closeSidebar();
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop() || 'dashboard.html';
+
+            document.querySelectorAll('.sidebar-nav a').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            document.querySelectorAll('.sidebar-nav a').forEach(link => {
+                const linkPage = link.getAttribute('href');
+                if (linkPage === currentPage ||
+                    linkPage === '../admin/' + currentPage ||
+                    linkPage.includes(currentPage)) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Set today's date
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('attendanceDate').value = today;
+        });
+    </script>
+
+</body>
+
+</html>
